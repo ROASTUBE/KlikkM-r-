@@ -1,0 +1,1153 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ROASTUBE 🔥</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:
+        radial-gradient(circle at top,#3b1010 0,#120606 40%,#070707 75%);
+    color:white;
+    min-height:100vh;
+}
+
+header{
+    padding:22px 7%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:rgba(0,0,0,.5);
+    border-bottom:1px solid #351515;
+    position:sticky;
+    top:0;
+    z-index:10;
+}
+
+.logo{
+    font-size:30px;
+    font-weight:1000;
+    color:#ff2929;
+    letter-spacing:2px;
+}
+
+.logo span{
+    color:white;
+}
+
+.badge{
+    border:1px solid #ff3030;
+    color:#ff5555;
+    padding:7px 13px;
+    border-radius:20px;
+    font-size:12px;
+    font-weight:bold;
+}
+
+.hero{
+    text-align:center;
+    padding:70px 20px 45px;
+}
+
+.hero h1{
+    font-size:clamp(42px,8vw,85px);
+    line-height:.95;
+    font-weight:1000;
+}
+
+.hero h1 span{
+    color:#ff2929;
+}
+
+.hero p{
+    max-width:700px;
+    margin:25px auto;
+    color:#aaa;
+    font-size:18px;
+    line-height:1.6;
+}
+
+.search{
+    width:min(850px,92%);
+    margin:auto;
+    display:flex;
+    gap:10px;
+}
+
+.search input{
+    flex:1;
+    padding:18px;
+    border-radius:12px;
+    border:1px solid #472020;
+    background:#130909;
+    color:white;
+    outline:none;
+    font-size:16px;
+}
+
+.search input:focus{
+    border-color:#ff2929;
+}
+
+.search button{
+    border:0;
+    padding:0 25px;
+    border-radius:12px;
+    background:#ff2525;
+    color:white;
+    font-weight:900;
+    cursor:pointer;
+    font-size:16px;
+}
+
+.search button:hover{
+    background:#ff4848;
+}
+
+.example{
+    margin-top:14px;
+    color:#666;
+    font-size:13px;
+}
+
+.container{
+    width:min(1150px,92%);
+    margin:40px auto 80px;
+}
+
+.hidden{
+    display:none!important;
+}
+
+.video-box{
+    background:#100909;
+    border:1px solid #351717;
+    border-radius:18px;
+    overflow:hidden;
+}
+
+.video{
+    position:relative;
+    padding-bottom:56.25%;
+    height:0;
+}
+
+.video iframe{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    border:0;
+}
+
+.info{
+    padding:25px;
+}
+
+.info h2{
+    font-size:28px;
+    margin-bottom:10px;
+}
+
+.info p{
+    color:#999;
+    line-height:1.6;
+}
+
+.tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-top:18px;
+}
+
+.tag{
+    padding:7px 11px;
+    border-radius:20px;
+    background:#260d0d;
+    border:1px solid #542020;
+    color:#ff5555;
+    font-size:12px;
+    font-weight:bold;
+}
+
+.channel{
+    margin-top:25px;
+    background:#100909;
+    border:1px solid #351717;
+    border-radius:18px;
+    padding:25px;
+}
+
+.channel h2{
+    margin-bottom:10px;
+}
+
+.channel p{
+    color:#999;
+    line-height:1.6;
+}
+
+.channel-button{
+    display:inline-block;
+    margin-top:18px;
+    padding:13px 20px;
+    border-radius:10px;
+    background:#ff2525;
+    color:white;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
+    margin-top:18px;
+}
+
+.stat{
+    background:#100909;
+    border:1px solid #321717;
+    border-radius:14px;
+    padding:18px;
+}
+
+.stat small{
+    color:#777;
+}
+
+.stat strong{
+    display:block;
+    margin-top:8px;
+    color:#ff3838;
+    font-size:21px;
+}
+
+.roast{
+    margin-top:20px;
+    padding:28px;
+    background:linear-gradient(135deg,#270909,#110606);
+    border:1px solid #652020;
+    border-radius:18px;
+}
+
+.roast-title{
+    color:#ff3030;
+    font-size:24px;
+    font-weight:1000;
+    margin-bottom:15px;
+}
+
+.roast-text{
+    color:#ddd;
+    font-size:18px;
+    line-height:1.7;
+}
+
+.roast-meter{
+    margin-top:22px;
+}
+
+.meter-top{
+    display:flex;
+    justify-content:space-between;
+    color:#aaa;
+    margin-bottom:8px;
+}
+
+.meter{
+    height:12px;
+    background:#251212;
+    border-radius:20px;
+    overflow:hidden;
+}
+
+.meter-fill{
+    height:100%;
+    width:0;
+    background:#ff2929;
+    transition:1s;
+}
+
+.thumbnail{
+    margin-top:20px;
+    border-radius:15px;
+    overflow:hidden;
+}
+
+.thumbnail img{
+    width:100%;
+    display:block;
+}
+
+.section-title{
+    margin:50px 0 20px;
+    font-size:28px;
+}
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+}
+
+.card{
+    background:#100909;
+    border:1px solid #301717;
+    border-radius:16px;
+    overflow:hidden;
+    transition:.25s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+    border-color:#ff3030;
+}
+
+.card-top{
+    height:150px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:60px;
+    background:#190909;
+}
+
+.card-content{
+    padding:18px;
+}
+
+.card h3{
+    margin-bottom:10px;
+}
+
+.card p{
+    color:#888;
+    line-height:1.5;
+    font-size:14px;
+}
+
+.card button{
+    width:100%;
+    margin-top:15px;
+    padding:11px;
+    border-radius:9px;
+    border:1px solid #522020;
+    background:#1b0b0b;
+    color:#ff5050;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.empty{
+    text-align:center;
+    padding:70px 20px;
+    color:#666;
+}
+
+.empty .big{
+    font-size:70px;
+    margin-bottom:15px;
+}
+
+footer{
+    padding:30px;
+    text-align:center;
+    color:#555;
+    border-top:1px solid #281313;
+    font-size:13px;
+}
+
+@media(max-width:800px){
+
+    .stats{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .cards{
+        grid-template-columns:1fr;
+    }
+
+    .search{
+        flex-direction:column;
+    }
+
+    .search button{
+        padding:16px;
+    }
+
+}
+
+@media(max-width:450px){
+
+    .hero{
+        padding-top:50px;
+    }
+
+    .stats{
+        grid-template-columns:1fr 1fr;
+    }
+
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">
+        ROAST<span>UBE</span> 🔥
+    </div>
+
+    <div class="badge">
+        API FREE
+    </div>
+
+</header>
+
+
+<section class="hero">
+
+    <h1>
+        DOBD BE A<br>
+        <span>YOUTUBERT.</span>
+    </h1>
+
+    <p>
+        Dobj be egy YouTube-videót vagy csatornát,
+        és indulhat a roast.
+    </p>
+
+    <div class="search">
+
+        <input
+            id="youtubeInput"
+            type="text"
+            placeholder="YouTube videó vagy csatorna linkje..."
+        >
+
+        <button onclick="openYouTube()">
+            🔥 DOBD BE
+        </button>
+
+    </div>
+
+    <div class="example">
+        Példa: youtube.com/watch?v=... vagy youtube.com/@csatorna
+    </div>
+
+</section>
+
+
+<main class="container">
+
+    <div id="empty" class="empty">
+
+        <div class="big">🔥</div>
+
+        <h2>
+            Dobj be egy YouTube-linket!
+        </h2>
+
+        <p>
+            Videó vagy csatorna is jöhet.
+        </p>
+
+    </div>
+
+
+    <div id="result" class="hidden">
+
+        <!-- VIDEÓ -->
+
+        <div id="videoSection">
+
+            <div class="video-box">
+
+                <div class="video">
+
+                    <iframe
+                        id="player"
+                        allow="autoplay; encrypted-media"
+                        allowfullscreen>
+                    </iframe>
+
+                </div>
+
+                <div class="info">
+
+                    <h2>
+                        🎥 YouTube videó
+                    </h2>
+
+                    <p>
+                        A videó megjelent a ROASTUBE-ban.
+                        Most már jöhet az égetés.
+                    </p>
+
+                    <div id="tags" class="tags"></div>
+
+                </div>
+
+            </div>
+
+
+            <div class="stats">
+
+                <div class="stat">
+                    <small>TÍPUS</small>
+                    <strong id="type">---</strong>
+                </div>
+
+                <div class="stat">
+                    <small>ROAST</small>
+                    <strong id="level">---</strong>
+                </div>
+
+                <div class="stat">
+                    <small>CLICKBAIT</small>
+                    <strong id="clickbait">---</strong>
+                </div>
+
+                <div class="stat">
+                    <small>DRÁMA</small>
+                    <strong id="drama">---</strong>
+                </div>
+
+            </div>
+
+
+            <div class="roast">
+
+                <div class="roast-title">
+                    🔥 ROAST ELEMZÉS
+                </div>
+
+                <div
+                    id="roastText"
+                    class="roast-text">
+                </div>
+
+                <div class="roast-meter">
+
+                    <div class="meter-top">
+                        <span>Roast intenzitás</span>
+                        <b id="percent">0%</b>
+                    </div>
+
+                    <div class="meter">
+
+                        <div
+                            id="meterFill"
+                            class="meter-fill">
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="thumbnail">
+
+                <img
+                    id="thumbnail"
+                    alt="YouTube thumbnail">
+
+            </div>
+
+        </div>
+
+
+        <!-- CSATORNA -->
+
+        <div id="channelSection" class="channel hidden">
+
+            <h2>
+                📺 YouTube csatorna
+            </h2>
+
+            <p>
+                A csatorna megnyitható közvetlenül
+                a YouTube-on. API nélkül az oldal nem tudja
+                automatikusan lekérni a csatorna összes videóját.
+            </p>
+
+            <a
+                id="channelLink"
+                class="channel-button"
+                target="_blank">
+                ▶ CSATORNA MEGNYITÁSA
+            </a>
+
+        </div>
+
+
+        <h2 class="section-title">
+            🎯 Roast témák
+        </h2>
+
+        <div id="cards" class="cards"></div>
+
+    </div>
+
+</main>
+
+
+<footer>
+
+    ROASTUBE 🔥 —
+    YouTube roast szórakoztató oldal.
+
+</footer>
+
+
+<script>
+
+const roasts = {
+
+    gaming:[
+        "Ez nem gameplay, ez egy hosszú tárgyalás a respawn képernyővel. 🎮",
+        "A skill issue itt már nem probléma, hanem komplett műfaj.",
+        "A játékosnak több ellenfele van, mint amennyit a játék tervezett.",
+        "A kontrollert valószínűleg már jogi úton próbálják megvédeni."
+    ],
+
+    vlog:[
+        "Kamera bekapcsolva. Történet valahol útközben elveszett.",
+        "Újabb nap az életből, amit feltétlenül dokumentálni kellett.",
+        "Kávé, séta, kamera. A YouTube-algoritmus elégedett.",
+        "Ez a vlog olyan, mint egy digitális napló, csak mindenki olvashatja."
+    ],
+
+    reaction:[
+        "A reakció intenzívebb, mint maga az esemény.",
+        "A thumbnail szerint sokk. A videó szerint enyhe szemöldökemelés.",
+        "Hollywood új színészt keres: reaction face kategóriában.",
+        "A videó 20%-a tartalom, 80%-a arckifejezés."
+    ],
+
+    drama:[
+        "A dráma már külön stáblistát érdemel.",
+        "Három perc tartalom, húsz perc: 'erről beszélnünk kell'.",
+        "Az internet ma sem maradt konfliktus nélkül.",
+        "A kommentmező valószínűleg veszélyesebb, mint maga a videó."
+    ],
+
+    tech:[
+        "A termék új. A thumbnail technikája viszont 2019-ben maradt.",
+        "Újabb unboxing, mintha feltaláltuk volna a kereket.",
+        "A kütyü többet tud, mint amit a videó elmond róla.",
+        "Nagy termék. Nagy felirat. Nagy meglepődött arc."
+    ],
+
+    challenge:[
+        "Valaki azt mondta: 'Ez jó ötlet lesz.' Senki nem ellenőrizte.",
+        "A kihívás sikerült. A méltóság kevésbé.",
+        "Az internet ismét bebizonyította, hogy bármiből lehet verseny.",
+        "Mi romolhat el? Az internet válasza: igen."
+    ],
+
+    generic:[
+        "A thumbnail többet ígért, mint amit a videó teljesíteni fog.",
+        "A kamera forog. A vágás kész. A józan ész szabadságon van.",
+        "Az algoritmus boldog. A nézők majd eldöntik.",
+        "Van itt cím, thumbnail és videó. A tartalom valahol útközben elveszett."
+    ]
+
+};
+
+
+function getVideoId(url){
+
+    const match = url.match(
+        /(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/shorts\/|youtube\.com\/embed\/)([^&?\/\s]+)/
+    );
+
+    return match ? match[1] : null;
+
+}
+
+
+function isChannel(url){
+
+    return (
+        url.includes("youtube.com/@") ||
+        url.includes("youtube.com/channel/") ||
+        url.includes("youtube.com/c/") ||
+        url.includes("youtube.com/user/")
+    );
+
+}
+
+
+function detectType(text){
+
+    text = text.toLowerCase();
+
+    if(
+        text.includes("gaming") ||
+        text.includes("gameplay") ||
+        text.includes("minecraft") ||
+        text.includes("fortnite") ||
+        text.includes("roblox") ||
+        text.includes("gta")
+    ){
+        return "gaming";
+    }
+
+    if(
+        text.includes("reaction") ||
+        text.includes("react") ||
+        text.includes("reagál")
+    ){
+        return "reaction";
+    }
+
+    if(
+        text.includes("vlog") ||
+        text.includes("napom") ||
+        text.includes("day in my life")
+    ){
+        return "vlog";
+    }
+
+    if(
+        text.includes("dráma") ||
+        text.includes("drama") ||
+        text.includes("balhé") ||
+        text.includes("botrány")
+    ){
+        return "drama";
+    }
+
+    if(
+        text.includes("tech") ||
+        text.includes("iphone") ||
+        text.includes("samsung") ||
+        text.includes("unboxing") ||
+        text.includes("teszt")
+    ){
+        return "tech";
+    }
+
+    if(
+        text.includes("challenge") ||
+        text.includes("kihívás") ||
+        text.includes("24 óra")
+    ){
+        return "challenge";
+    }
+
+    return "generic";
+
+}
+
+
+function random(array){
+
+    return array[
+        Math.floor(Math.random()*array.length)
+    ];
+
+}
+
+
+function calculateClickbait(text){
+
+    let score = 20;
+
+    const words = [
+        "!!!",
+        "😱",
+        "OMG",
+        "HIHETETLEN",
+        "SOKK",
+        "LEBUKOTT",
+        "NEM HISZED EL",
+        "VÉGE"
+    ];
+
+    words.forEach(word => {
+
+        if(text.toUpperCase().includes(word)){
+            score += 9;
+        }
+
+    });
+
+    return Math.min(score,99);
+
+}
+
+
+function calculateDrama(text){
+
+    let score = 10;
+
+    const words = [
+        "dráma",
+        "drama",
+        "balhé",
+        "botrány",
+        "vita",
+        "háború",
+        "lebukott"
+    ];
+
+    words.forEach(word => {
+
+        if(text.toLowerCase().includes(word)){
+            score += 12;
+        }
+
+    });
+
+    return Math.min(score,98);
+
+}
+
+
+function typeName(type){
+
+    const names = {
+        gaming:"GAMING",
+        reaction:"REACTION",
+        vlog:"VLOG",
+        drama:"DRÁMA",
+        tech:"TECH",
+        challenge:"CHALLENGE",
+        generic:"VEGYES"
+    };
+
+    return names[type];
+
+}
+
+
+function createCards(type){
+
+    const cards =
+        document.getElementById("cards");
+
+    cards.innerHTML = "";
+
+    const data = {
+
+        gaming:[
+            ["🎮","Gaming roast","Amikor a játékos és a kontroller már személyes konfliktusban vannak."],
+            ["🏆","Skill issue","A pillanat, amikor rájössz, hogy te voltál az ellenfél."],
+            ["🔥","Rage mód","A videóban több az indulat, mint a stratégia."]
+        ],
+
+        reaction:[
+            ["😱","Reaction face","Az arc többet dolgozik, mint a forgatókönyv."],
+            ["👀","MEGLEPETÉS","Minden videóhoz kötelező három döbbent tekintet."],
+            ["😂","Dupla reaction","Mi történik, ha ketten reagálnak ugyanarra?"]
+        ],
+
+        vlog:[
+            ["📹","Vlog roast","Kávé, séta, kamera. Klasszikus."],
+            ["🚗","Életvlog","Minden pillanat dokumentálva."],
+            ["🌴","Utazós vlog","A helyszín szép. A thumbnail még szebb."]
+        ],
+
+        drama:[
+            ["🔥","Internet drama","Mert egy sima vita túl egyszerű lenne."],
+            ["🚨","BOTRÁNY","A thumbnail szerint történelmi pillanat."],
+            ["🍿","Popcorn mód","A kommentek valószínűleg külön műsort kapnak."]
+        ],
+
+        tech:[
+            ["📱","Tech roast","Új telefon, új thumbnail, ugyanaz a piros nyíl."],
+            ["📦","Unboxing","A doboz kibontása mint sportág."],
+            ["💻","Tech thumbnail","Nagy termék. Nagy betű. Nagy arc."]
+        ],
+
+        challenge:[
+            ["🏃","Challenge","Valaki mindig túl komolyan veszi."],
+            ["⏱️","24 óra","Mert 23 óra 59 perc nem hangzik elég jól."],
+            ["💀","Mi romolhat el?","Internet: igen."]
+        ],
+
+        generic:[
+            ["🔥","Clickbait roast","A cím már előre megnyerte a vitát."],
+            ["😂","Thumbnail roast","A piros nyíl ismét megoldott mindent."],
+            ["🍿","Kommentmező","Itt kezdődik az igazi szórakozás."]
+        ]
+
+    };
+
+    data[type].forEach(item => {
+
+        const card =
+            document.createElement("div");
+
+        card.className = "card";
+
+        card.innerHTML = `
+            <div class="card-top">
+                ${item[0]}
+            </div>
+
+            <div class="card-content">
+
+                <h3>${item[1]}</h3>
+
+                <p>${item[2]}</p>
+
+                <button onclick="newRoast('${type}')">
+                    🔥 ROAST
+                </button>
+
+            </div>
+        `;
+
+        cards.appendChild(card);
+
+    });
+
+}
+
+
+function newRoast(type){
+
+    const text =
+        random(roasts[type]);
+
+    document.getElementById(
+        "roastText"
+    ).textContent = text;
+
+}
+
+
+function openYouTube(){
+
+    const input =
+        document.getElementById("youtubeInput")
+        .value
+        .trim();
+
+    if(!input){
+
+        alert("Írj be egy YouTube-linket!");
+
+        return;
+
+    }
+
+
+    document
+        .getElementById("empty")
+        .classList.add("hidden");
+
+    document
+        .getElementById("result")
+        .classList.remove("hidden");
+
+
+    /*
+        VIDEÓ
+    */
+
+    const videoId =
+        getVideoId(input);
+
+
+    if(videoId){
+
+        document
+            .getElementById("videoSection")
+            .classList.remove("hidden");
+
+        document
+            .getElementById("channelSection")
+            .classList.add("hidden");
+
+
+        document
+            .getElementById("player")
+            .src =
+            "https://www.youtube-nocookie.com/embed/"
+            + videoId;
+
+
+        document
+            .getElementById("thumbnail")
+            .src =
+            "https://img.youtube.com/vi/"
+            + videoId
+            + "/maxresdefault.jpg";
+
+
+        const type =
+            detectType(input);
+
+
+        const clickbait =
+            calculateClickbait(input);
+
+        const drama =
+            calculateDrama(input);
+
+
+        const roast =
+            Math.min(
+                99,
+                Math.max(
+                    25,
+                    Math.round(
+                        (
+                            clickbait +
+                            drama +
+                            Math.random()*40
+                        ) / 3
+                    )
+                )
+            );
+
+
+        document
+            .getElementById("type")
+            .textContent =
+            typeName(type);
+
+
+        document
+            .getElementById("level")
+            .textContent =
+            roast + "/100";
+
+
+        document
+            .getElementById("clickbait")
+            .textContent =
+            clickbait + "%";
+
+
+        document
+            .getElementById("drama")
+            .textContent =
+            drama + "%";
+
+
+        document
+            .getElementById("percent")
+            .textContent =
+            roast + "%";
+
+
+        document
+            .getElementById("meterFill")
+            .style.width =
+            roast + "%";
+
+
+        newRoast(type);
+
+
+        const tags =
+            document.getElementById("tags");
+
+        tags.innerHTML = "";
+
+        [
+            "#" + typeName(type).toLowerCase(),
+            "#roast",
+            "#youtube",
+            "#roastube"
+        ].forEach(tag => {
+
+            const span =
+                document.createElement("span");
+
+            span.className = "tag";
+
+            span.textContent = tag;
+
+            tags.appendChild(span);
+
+        });
+
+
+        createCards(type);
+
+    }
+
+
+    /*
+        CSATORNA
+    */
+
+    else if(isChannel(input)){
+
+        document
+            .getElementById("videoSection")
+            .classList.add("hidden");
+
+        document
+            .getElementById("channelSection")
+            .classList.remove("hidden");
+
+
+        document
+            .getElementById("channelLink")
+            .href = input;
+
+
+        createCards("generic");
+
+    }
+
+
+    else{
+
+        alert(
+            "Nem ismertem fel a linket.\n\n" +
+            "Használj YouTube videó- vagy csatornalinket."
+        );
+
+        return;
+
+    }
+
+
+    document
+        .getElementById("result")
+        .scrollIntoView({
+            behavior:"smooth"
+        });
+
+}
+
+
+document
+    .getElementById("youtubeInput")
+    .addEventListener(
+        "keydown",
+        function(event){
+
+            if(event.key === "Enter"){
+                openYouTube();
+            }
+
+        }
+    );
+
+</script>
+
+</body>
+</html>
